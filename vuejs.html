@@ -8,29 +8,24 @@
   </head>
   <body>
     <div id="app">
-      Counter : {{ counter }}
+        <span v-bind:title="message">
+            my name is davood 
+        </span>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
 
     <script>
-
-
-      const Test = {
+      const AttributeBinding = {
         data() {
-          return {
-            counter: 0,
-          };
-        },
+            return{
+                message: 'This is Page on ' + new Date().toLocaleString()
 
-        mounted() {
-            setInterval( () => {
-                this.counter++
-            }, 1000)
-        }
+            }
+        },
       };
 
-      Vue.createApp(Test).mount("#app");
+      Vue.createApp(AttributeBinding).mount('#app')
     </script>
   </body>
 </html>
