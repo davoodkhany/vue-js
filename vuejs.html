@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning Vue JS start</title>
+
   </head>
+
   <body>
     <div id="app">
-        <span v-bind:title="message">
-            my name is davood 
-        </span>
+        <P>{{ message }}</P>
+        <button v-on:click="reverseMessage">reverseMessage</button>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -19,13 +20,27 @@
       const AttributeBinding = {
         data() {
             return{
-                message: 'This is Page on ' + new Date().toLocaleString()
-
+                message: 'Hello My name is Davood'
             }
         },
+
+
+        methods:{
+            reverseMessage(){
+                this.message = this.message
+                .split('')
+                .reverse()
+                .join('')
+
+            }
+        }
       };
 
+
+
       Vue.createApp(AttributeBinding).mount('#app')
+
+
     </script>
   </body>
 </html>
