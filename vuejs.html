@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning Vue JS start</title>
-
   </head>
 
   <body>
     <div id="app">
-        <P>{{ message }}</P>
-        <input type="text" v-model="message">
-        <a v-bind:href="url">Google</a>
-        <img v-bind:src="img" alt="">
+      <p v-on:click="count++">{{ count }}</p>
     </div>
+
+
+
 
     <script src="https://unpkg.com/vue@next"></script>
 
@@ -22,21 +21,11 @@
       const AttributeBinding = {
         data() {
             return{
-                message: 'Hello My name is Davood',
-                url: 'https://google.com',
-                img: 'https://static.roocket.ir/public/image/2017/6/13/flexbox-cover-2.jpg'
+                count: 0
             }
         },
-
-
-
-      };
-
-
-
+    }
       Vue.createApp(AttributeBinding).mount('#app')
-
-
     </script>
   </body>
 </html>
