@@ -11,7 +11,9 @@
   <body>
     <div id="app">
         <P>{{ message }}</P>
-        <button v-on:click="reverseMessage">reverseMessage</button>
+        <input type="text" v-model="message">
+        <a v-bind:href="url">Google</a>
+        <img v-bind:src="img" alt="">
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -20,20 +22,14 @@
       const AttributeBinding = {
         data() {
             return{
-                message: 'Hello My name is Davood'
+                message: 'Hello My name is Davood',
+                url: 'https://google.com',
+                img: 'https://static.roocket.ir/public/image/2017/6/13/flexbox-cover-2.jpg'
             }
         },
 
 
-        methods:{
-            reverseMessage(){
-                this.message = this.message
-                .split('')
-                .reverse()
-                .join('')
 
-            }
-        }
       };
 
 
