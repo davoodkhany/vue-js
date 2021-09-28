@@ -14,8 +14,10 @@
 
       <!-- <button type="submit" id=""@click="eventHandller">eventHandller</button> -->
 
-      <button @click="warn('hi', $event)">hi</button>
+      <!-- <button @click="warn('hi', $event)">hi</button> -->
 
+
+      <button @click="one($event), two($event)"></button>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -31,13 +33,29 @@
 
         methods:{
 
-        warn(message,event){
+          one(event) {
+            console.log('one')
+          },
+          
+          two(event){
+            console.log('tow')
+          }
 
-        if(event){
-          event.preventDefault()
         }
 
-        alert(message);
+
+
+      //  warn(message,event){
+
+
+
+
+          
+     //   if(event){
+      //    event.preventDefault()
+//}
+
+      //  alert(message);
 
           //alert('Hello davood' + this.count)
 
@@ -51,9 +69,7 @@
 
           }
 
-        }
-
-    }
+ 
 
       Vue.createApp(AttributeBinding).mount('#app')
 
