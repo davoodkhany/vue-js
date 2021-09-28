@@ -9,13 +9,20 @@
 
   <body>
     <div id="app">
-      <p v-on:click="eventHandller($event , 2)">{{ count }}</p>
+
+      <!-- <p v-on:click="eventHandller($event , 2)">{{ count }}</p> -->
+
+      <!-- <button type="submit" id=""@click="eventHandller">eventHandller</button> -->
+
+      <button @click="warn('hi', $event)">hi</button>
+
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
 
     <script>
       const AttributeBinding = {
+
         data() {
             return{
                 count: 0
@@ -23,11 +30,29 @@
         },
 
         methods:{
-          eventHandller(event , num){
-              console.log(event)
-            this.count = this.count + num
-          }
+
+        warn(message,event){
+
+        if(event){
+          event.preventDefault()
         }
+
+        alert(message);
+
+          //alert('Hello davood' + this.count)
+
+          //if(event){
+
+            //alert(event.target.tagType)
+
+          //}
+
+              
+
+          }
+
+        }
+
     }
 
       Vue.createApp(AttributeBinding).mount('#app')
