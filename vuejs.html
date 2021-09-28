@@ -9,7 +9,7 @@
 
   <body>
     <div id="app">
-      <p v-on:click="eventHandller">{{ count }}</p>
+      <p v-on:click="eventHandller($event , 2)">{{ count }}</p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -23,12 +23,15 @@
         },
 
         methods:{
-          eventHandller(){
-            console.log('click')
+          eventHandller(event , num){
+              console.log(event)
+            this.count = this.count + num
           }
         }
     }
+
       Vue.createApp(AttributeBinding).mount('#app')
+
     </script>
   </body>
 </html>
