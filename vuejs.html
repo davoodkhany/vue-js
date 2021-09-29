@@ -9,38 +9,26 @@
 
   <body>
     <div id="app">
-
-      <!-- <p v-on:click="eventHandller($event , 2)">{{ count }}</p> -->
-
-      <!-- <button type="submit" id=""@click="eventHandller">eventHandller</button> -->
-
-      <!-- <button @click="warn('hi', $event)">hi</button> -->
-
-
-      <button @click="one($event), two($event)"></button>
+      <input type="text" :value="message" @input="test">
+      <label for="">{{ message }}</label>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
 
     <script>
+
       const AttributeBinding = {
 
         data() {
             return{
-                count: 0
+                message : "davood"
             }
         },
 
         methods:{
-
-          one(event) {
-            console.log('one')
-          },
-          
-          two(event){
-            console.log('tow')
+          test(event){
+            this.message = event.target.value
           }
-
         }
 
 
