@@ -9,7 +9,7 @@
 
   <body>
     <div id="app">
-      <input type="text" :value="message" @input="test">
+      <input type="text" :value="message" v-model="message" />
       <label for="">{{ message }}</label>
     </div>
 
