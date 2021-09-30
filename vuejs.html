@@ -11,9 +11,9 @@
     <div id="app">
       <form @submit.prevent>
 
-        <input type="text" :value="name"  @input="names" /> 
+        <input type="text" v-model="name" /> 
 
-        <input type="email" :value="email"  @input="emails" />
+        <input type="email" v-model="email" />
 
         <button type="submit" v-on:click="submit">Submit</button> 
 
