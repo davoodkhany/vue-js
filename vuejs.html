@@ -9,63 +9,58 @@
 
   <body>
     <div id="app">
-      <input type="text"  v-model="message" />
-      <br>
-      <!-- <label for="" >{{ message }}</label> -->
+      <form @submit.prevent>
 
-      <div v-text="message" > 
-         
-      </div>
+        <input type="text" :value="name"  @input="names" /> 
+
+        <input type="email" :value="email"  @input="emails" />
+
+        <button type="submit" v-on:click="submit">Submit</button> 
+
+      </form>
+
+      <h2>content :</h2>
+
+
+       <p>{{ name }}</p>
+
+      <p>{{ email }}</p>
+
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
 
     <script>
-
-      const AttributeBinding = {
-
+      const App = {
         data() {
-            return{
-                message : "<h2>my name is davood</h2>"
-            }
+          return {
+            name :"davood",
+            email:'Ali@ali.com'
+          };
         },
 
         methods:{
-          test(event){
-            this.message = event.target.value
-          }
-        }
 
+          submit(){
+            console.log(this.name)
+            console.log(this.email)
+          },
 
-
-      //  warn(message,event){
-
-
-
-
+          names(){
+            this.name = event.target.value
+          },
           
-     //   if(event){
-      //    event.preventDefault()
-//}
-
-      //  alert(message);
-
-          //alert('Hello davood' + this.count)
-
-          //if(event){
-
-            //alert(event.target.tagType)
-
-          //}
-
-              
-
+          emails(value){
+            this.email = event.target.value
           }
 
- 
 
-      Vue.createApp(AttributeBinding).mount('#app')
 
+
+        }
+      };
+
+      Vue.createApp(App).mount("#app");
     </script>
   </body>
 </html>
