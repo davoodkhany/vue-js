@@ -11,9 +11,9 @@
     <div id="app">
       <form @submit.prevent>
 
-        <input type="text" v-model="name" /> 
+        <input type="text" name="name" :value="name"  @input="changeInput" /> 
 
-        <input type="email" v-model="email" />
+        <input type="email" name="email":value="email"  @input="changeInput" />
 
         <button type="submit" v-on:click="submit">Submit</button> 
 
@@ -46,13 +46,9 @@
             console.log(this.email)
           },
 
-          names(){
-            this.name = event.target.value
+          changeInput(event){
+            this[event.target.name] = event.target.value
           },
-          
-          emails(value){
-            this.email = event.target.value
-          }
 
 
 
