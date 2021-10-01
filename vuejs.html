@@ -9,14 +9,13 @@
 
   <body>
     <div id="app">
-      <form @submit.prevent>
+      <form @submit.prevent="submit">
 
         <input type="text" name="name" :value="name"  @input="changeInput" /> 
 
         <input type="email" name="email":value="email"  @input="changeInput" />
 
-        <button type="submit" v-on:click="submit">Submit</button> 
-
+`
       </form>
 
       <h2>content :</h2>
