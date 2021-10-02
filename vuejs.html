@@ -9,9 +9,10 @@
 
   <body>
     <div id="app">
-      <input type="text" v-model="name" />
-      <h1>{{ name }}</h1>
-      <h2>{{ DateTime }}</h2>
+      <p>
+        <input type="text" v-model="question">
+      </p>
+      <p>{{ answer }}</p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -20,8 +21,17 @@
       const App = {
         data() {
           return {
-            name: "davood",
+            question: "",
+            answer: "I cannot give you an answer until you ask a question!"
           };
+        },
+
+        whatch:{
+          question(newQuestion,oldQuestion){
+
+            this.answer = "Waitting for you stop typing ..."
+
+          }
         },
 
         computed: {
@@ -30,7 +40,9 @@
           },
         },
 
-        methods: {},
+        methods: {
+
+        },
       };
 
       Vue.createApp(App).mount("#app");
