@@ -9,22 +9,9 @@
 
   <body>
     <div id="app">
-      <form @submit.prevent="submit">
-
-        <input type="text" name="name" :value="name"  @input="changeInput" /> 
-
-        <input type="email" name="email":value="email"  @input="changeInput" />
-
-`
-      </form>
-
-      <h2>content :</h2>
-
-
-       <p>{{ name }}</p>
-
-      <p>{{ email }}</p>
-
+      <input type="text" v-model="name" />
+      <h1>{{ name }}</h1>
+      <h2>{{ DateTime }}</h2>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -33,26 +20,17 @@
       const App = {
         data() {
           return {
-            name :"davood",
-            email:'Ali@ali.com'
+            name: "davood",
           };
         },
 
-        methods:{
-
-          submit(){
-            console.log(this.name)
-            console.log(this.email)
+        computed: {
+          DateTime() {
+            return Date.now();
           },
+        },
 
-          changeInput(event){
-            this[event.target.name] = event.target.value
-          },
-
-
-
-
-        }
+        methods: {},
       };
 
       Vue.createApp(App).mount("#app");
