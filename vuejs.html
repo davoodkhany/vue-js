@@ -20,7 +20,7 @@
 
   <body>
     <div id="app">
-        <p v-bind:style="{color : login ? 'red' : 'green', border: '1px solid' , borderColor: 'red'}" @click = "login = !login">Davood</p>
+        <p :style ="[stylingObject, stylingObject2]" @click = "login = !login">Davood</p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -30,6 +30,15 @@
         data() {
           return {
             login:true,
+            stylingObject:{
+              color:this.login ? 'red' : 'green',
+              border: '1px solid',
+              borderColor: 'red',  
+            },
+            stylingObject2:{
+              backgroundColor: 'yellow'
+            }
+
           }
         },
 
