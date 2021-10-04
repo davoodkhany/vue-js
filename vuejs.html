@@ -20,7 +20,7 @@
 
   <body>
     <div id="app">
-        <p v-bind:class='{ login ? greeen : blue }'>Davood</p>
+        <p v-bind:style="{color : login ? 'red' : 'green', border: '1px solid' , borderColor: 'red'}" @click = "login = !login">Davood</p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
