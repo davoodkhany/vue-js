@@ -5,14 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning Vue JS start</title>
+
+    <style>
+
+      .blue{
+        color:red;
+      }
+      .green{
+        color:green;
+      }
+    </style>
+
   </head>
 
   <body>
     <div id="app">
-      <p>
-        <input type="text" v-model="question">
-      </p>
-      <p>{{ answer }}</p>
+        <p v-bind:class='{ login ? greeen : blue }'>Davood</p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -21,23 +29,16 @@
       const App = {
         data() {
           return {
-            question: "",
-            answer: "I cannot give you an answer until you ask a question!"
-          };
-        },
-
-        whatch:{
-          question(newQuestion,oldQuestion){
-
-            this.answer = "Waitting for you stop typing ..."
-
+            login:true,
           }
         },
 
+        watch: {
+
+        },
+
         computed: {
-          DateTime() {
-            return Date.now();
-          },
+
         },
 
         methods: {
