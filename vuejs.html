@@ -7,20 +7,20 @@
     <title>Learning Vue JS start</title>
 
     <style>
-
-      .blue{
-        color:red;
+      .active {
+        background-color: yellow;
       }
-      .green{
-        color:green;
+      .danger {
+        color: red;
       }
     </style>
-
   </head>
 
   <body>
     <div id="app">
-        <p :style ="[stylingObject, stylingObject2]" @click = "login = !login">Davood</p>
+      <div v-bind:class="{active : isActive , danger : hasError}" @click="hasError = ! hasError">
+        my name is davood
+      </div>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -29,30 +29,16 @@
       const App = {
         data() {
           return {
-            login:true,
-            stylingObject:{
-              color:this.login ? 'red' : 'green',
-              border: '1px solid',
-              borderColor: 'red',  
-            },
-            stylingObject2:{
-              backgroundColor: 'yellow'
-            }
-
-          }
+            isActive: true,
+            hasError: false,
+          };
         },
 
-        watch: {
+        watch: {},
 
-        },
+        computed: {},
 
-        computed: {
-
-        },
-
-        methods: {
-
-        },
+        methods: {},
       };
 
       Vue.createApp(App).mount("#app");
