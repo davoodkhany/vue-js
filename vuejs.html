@@ -18,7 +18,7 @@
 
   <body>
     <div id="app">
-      <div v-bind:class="{active : isActive , danger : hasError}" @click="hasError = ! hasError">
+      <div v-bind:class="classObject" @click="hasError = ! hasError">
         my name is davood
       </div>
     </div>
@@ -29,16 +29,23 @@
       const App = {
         data() {
           return {
-            isActive: true,
-            hasError: false,
+            isActive:true,
+            error:null,
           };
         },
 
         watch: {},
 
-        computed: {},
+        computed: {
+          classObject(){
 
-        methods: {},
+            active: this.isActive
+            dangr: this.error && this.error.type === 'fatal'
+          }
+        },
+        methods: {
+          
+        },
       };
 
       Vue.createApp(App).mount("#app");
