@@ -18,9 +18,9 @@
 
   <body>
     <div id="app">
-      <div v-bind:class="classObject" @click="hasError = ! hasError">
-        my name is davood
-      </div>
+      <p :class="ActiveCode()" @click="isActive = !isActive">
+        Click me
+      </p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -30,21 +30,21 @@
         data() {
           return {
             isActive:true,
-            error:null,
+          
           };
         },
 
         watch: {},
 
         computed: {
-          classObject(){
 
-            active: this.isActive
-            dangr: this.error && this.error.type === 'fatal'
-          }
         },
         methods: {
-          
+          ActiveCode(){
+            return{
+              'active': this.isActive,
+            }
+          }
         },
       };
 
