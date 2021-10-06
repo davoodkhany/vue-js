@@ -13,6 +13,14 @@
       .danger {
         color: red;
       }
+      .button{
+        padding: 10px 40px;
+        border-radius: 5px;
+        background: #0070ff;
+        font-size: 15px;
+        font-weight: 600;
+        color: white;
+      }
     </style>
   </head>
 
@@ -21,6 +29,8 @@
       <p :class="ActiveCode()" @click="isActive = !isActive">
         Click me
       </p>
+
+      <button :class="ButtonActivate"> Click me</button>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -37,7 +47,11 @@
         watch: {},
 
         computed: {
-
+          ButtonActivate(){
+            return{
+              button:this.isActive,
+            }
+          }
         },
         methods: {
           ActiveCode(){
