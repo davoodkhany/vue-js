@@ -7,49 +7,28 @@
     <title>Learning Vue JS start</title>
 
     <style>
-      .alert {
-        display: none;
-        background: burlywood;
-        border-radius: 10px;
-        width: 30%;
-        padding-right: 10px;
-        padding-left: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        margin: 16px 0px;
-        text-align: right;
-    }
-
-    .active {
-        display: inherit !important;
-    }
-
-    .alert-danger {
-        background: orange;
+      .has-error{
         color: red;
-    }
+        display:block !important;
+        
+      }
     </style>
   </head>
 
   <body>
     <div id="app">
-      <form @submit.prevent="login">
+      <form @submit.prevent="login()">
         <label for="email">Email</label>
-        <input type="text" v-model="email" @input="checkValidation" />
+        <input type="text" v-model="email" />
+       <p style="display: none;" :class="{'has-error' : hasEmailError[0]}" v-text="hasEmailError[1]"></p>
         <br />
         <br />
 
         <label for="Password">Password</label>
-        <input type="password" v-model="password" @input="checkValidation" />
-        <div class="alert alert-danger" :class="{'active' : !emailIsValid | !passwordIsValid }">
+        <input type="password" v-model="password" />
+        <p style="display: none;" :class="{'has-error' : hasPassword}">طول پسورد حداقل باید 8 کاراکتر باشد</p>
 
-          <strong>اطلاعات وارد شده درست نمی باشد</strong>
-          <hr>
 
-          <p :class="{'active' : !emailIsValid }" style="margin: unset; display: none">فیلد ایمیل درست وارد نشده
-              است</p>
-          <p :class="{'active' : !passwordIsValid }" style="margin: unset; display: none">فیلد رمز عبور باید حداقل 8
-              کاراکتر باشد</p>
       </div>
         <button type="submit">Submit</button>
       </form>
@@ -61,28 +40,45 @@
       const App = {
         data() {
           return {
-            email: "davood",
-            password: "davood",
+            email: "davood@gmail.com",
+            password: "davood12",
             emailIsValid: true,
             passwordIsValid:true,
           };
         },
 
-        methods: {
-          login() {
-            this.checkValidation
-            this.checkValidation(this.email, this.password)
-            if(this.emailIsvalid && this.passwordIsValid) {
-              console.log('login ok');
-            }
+        computed:{
+
+          hasEmailError(){
+            let email = this.email;
+            if(this.emailIsValids(email))
+            return [false, null]
+            else 
+            return [true, 'فرمت وارد شده صحیح نمی باشد']
           },
 
-        },
-        computed:{
-          checkValidation(email, password) {
-            this.emailIsValid =/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-            this.passwordIsValid = password.length >= 8 ? true : false
+
+          hasPassword(){
+            if (this.password.length <= 7 ){
+              return true;
+            }
           }
+          
+        },
+        
+        methods: {
+
+
+          login(){
+            console.log('Log');
+          },
+
+          emailIsValids (email) {
+             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+          } 
+        
+
+
         },
 
         watch:{
