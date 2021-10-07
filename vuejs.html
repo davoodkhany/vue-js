@@ -7,35 +7,52 @@
     <title>Learning Vue JS start</title>
 
     <style>
-      .active {
-        background-color: yellow;
-      }
-      .danger {
+      .alert {
+        display: none;
+        background: burlywood;
+        border-radius: 10px;
+        width: 30%;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin: 16px 0px;
+        text-align: right;
+    }
+
+    .active {
+        display: inherit !important;
+    }
+
+    .alert-danger {
+        background: orange;
         color: red;
-      }
-      .button{
-        padding: 10px 40px;
-        border-radius: 5px;
-        background: #0070ff;
-        font-size: 15px;
-        font-weight: 600;
-        color: white;
-      }
+    }
     </style>
   </head>
 
   <body>
     <div id="app">
-      <form @submit.prevent="submit">
-
+      <form @submit.prevent="login">
         <label for="email">Email</label>
-        <input type="text" v-model="email">
-          <br> <br>
+        <input type="text" v-model="email" @input="checkValidation" />
+        <br />
+        <br />
+
         <label for="Password">Password</label>
-        <input type="password" v-model="password">
+        <input type="password" v-model="password" @input="checkValidation" />
+        <div class="alert alert-danger" :class="{'active' : !emailIsValid | !passwordIsValid }">
+
+          <strong>اطلاعات وارد شده درست نمی باشد</strong>
+          <hr>
+
+          <p :class="{'active' : !emailIsValid }" style="margin: unset; display: none">فیلد ایمیل درست وارد نشده
+              است</p>
+          <p :class="{'active' : !passwordIsValid }" style="margin: unset; display: none">فیلد رمز عبور باید حداقل 8
+              کاراکتر باشد</p>
+      </div>
         <button type="submit">Submit</button>
       </form>
-
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -44,21 +61,33 @@
       const App = {
         data() {
           return {
-            email:'davood',
-            password:'davood'
+            email: "davood",
+            password: "davood",
+            emailIsValid: true,
+            passwordIsValid:true,
           };
         },
 
+        methods: {
+          login() {
+            this.checkValidation
+            this.checkValidation(this.email, this.password)
+            if(this.emailIsvalid && this.passwordIsValid) {
+              console.log('login ok');
+            }
+          },
 
-        computed:{},
-
-        methods:{
-          submit(){
-            console.log(this.email)
-            console.log(this.password)
+        },
+        computed:{
+          checkValidation(email, password) {
+            this.emailIsValid =/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            this.passwordIsValid = password.length >= 8 ? true : false
           }
-        }
+        },
 
+        watch:{
+
+        }
       };
 
       Vue.createApp(App).mount("#app");
