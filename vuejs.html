@@ -26,11 +26,16 @@
 
   <body>
     <div id="app">
-      <p :class="ActiveCode()" @click="isActive = !isActive">
-        Click me
-      </p>
+      <form @submit.prevent="submit">
 
-      <button :class="ButtonActivate"> Click me</button>
+        <label for="email">Email</label>
+        <input type="text" v-model="email">
+          <br> <br>
+        <label for="Password">Password</label>
+        <input type="password" v-model="password">
+        <button type="submit">Submit</button>
+      </form>
+
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -39,27 +44,21 @@
       const App = {
         data() {
           return {
-            isActive:true,
-          
+            email:'davood',
+            password:'davood'
           };
         },
 
-        watch: {},
 
-        computed: {
-          ButtonActivate(){
-            return{
-              button:this.isActive,
-            }
+        computed:{},
+
+        methods:{
+          submit(){
+            console.log(this.email)
+            console.log(this.password)
           }
-        },
-        methods: {
-          ActiveCode(){
-            return{
-              'active': this.isActive,
-            }
-          }
-        },
+        }
+
       };
 
       Vue.createApp(App).mount("#app");
