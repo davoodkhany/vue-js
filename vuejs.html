@@ -16,15 +16,9 @@
 
   <body>
     <div id="app">
-      <div v-for="user in users">
-        <p v-text="user.name"></p>
-        <p v-text="user.family"></p>
+      <div v-for="(item, index) in items">
+        {{ index }} - {{ item.message }}
       </div>
-
-      <ul v-for = "name in names">
-        <li >{{ name }}</li>
-      </ul>
- 
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -33,28 +27,7 @@
       const App = {
         data() {
           return {
-            users: [
-              {
-                id: 1,
-                name: "davood",
-                family: "khany",
-              },
-              {
-                id: 2,
-                name: "ali",
-                famil: "rezaei",
-              },
-              {
-                id: 3,
-                name: "reza",
-                famil: "chegini",
-              },
-            ],
-            names:[
-              'davood',
-              'ali',
-              'reza'
-            ],
+            items: [{ message: "foo" }, { message: "bar" }],
           };
         },
 
