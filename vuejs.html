@@ -16,8 +16,16 @@
 
   <body>
     <div id="app">
-      <div v-for="(item, index) in items">
-        {{ index }} - {{ item.message }}
+      <div><p>my name is davood</p></div>
+      <div>
+        <div v-for="user in users">
+          <p v-text="user.name"></p>
+          <p v-text="user.family"></p>
+
+          <button @click="deleteItem(user.id)">Delete</button>
+
+          <button @click="updateItem(user.id , 'value')">Update</button>
+        </div>
       </div>
     </div>
 
@@ -27,15 +35,44 @@
       const App = {
         data() {
           return {
-            items: [{ message: "foo" }, { message: "bar" }],
+            users: [
+              {
+                id: 1,
+                name: "davood",
+                family: "khany",
+              },
+              {
+                id: 2,
+                name: "ali",
+                family: "rezaei",
+              },
+              {
+                id: 3,
+                name: "reza",
+                family: "chegini",
+              },
+            ],
           };
         },
 
-        computed: {},
-
-        methods: {},
-
-        watch: {},
+        methods: {
+          deleteItem(id) {
+            this.users = this.users.filter((user) => user.id != id);
+          },
+          updateItem(id, value) {
+            this.users = this.users.map((user) => {
+              if (user.id == id) {
+                return {
+                  id: user.id,
+                  name: user.name,
+                  family: value,
+                };
+              } else {
+                return user;
+              }
+            });
+          },
+        },
       };
 
       Vue.createApp(App).mount("#app");
