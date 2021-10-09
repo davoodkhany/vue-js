@@ -16,17 +16,17 @@
 
   <body>
     <div id="app">
-      <div><p>my name is davood</p></div>
-      <div>
-        <div v-for="user in users">
-          <p v-text="user.name"></p>
-          <p v-text="user.family"></p>
+      <div v-for="name of names">
+        <p>{{ name.family }}</p>
+        <p>{{ name.email }}</p>
 
-          <button @click="deleteItem(user.id)">Delete</button>
-
-          <button @click="updateItem(user.id , 'value')">Update</button>
-        </div>
+        <button @click="DeleteItems(name.id)">Delete</button>
       </div>
+
+      <input type="text" v-model="id" />
+      <input type="text" v-model="family" />
+      <input type="text" v-model="email" />
+      <button @click="addItemNew()">Created</button>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -35,44 +35,29 @@
       const App = {
         data() {
           return {
-            users: [
-              {
-                id: 1,
-                name: "davood",
-                family: "khany",
-              },
-              {
-                id: 2,
-                name: "ali",
-                family: "rezaei",
-              },
-              {
-                id: 3,
-                name: "reza",
-                family: "chegini",
-              },
+            names: [
+              { id: "1", family: "davood", email: "davoodkhany@gmail.com" },
+              { id: "2", family: "rezayee", email: "reza@gmail.com" },
             ],
+            id: "",
+            family: "",
+            email: "",
           };
         },
 
         methods: {
-          deleteItem(id) {
-            this.users = this.users.filter((user) => user.id != id);
+          DeleteItems(id) {
+            this.names = this.names.filter((user) => user.id != id);
           },
-          updateItem(id, value) {
-            this.users = this.users.map((user) => {
-              if (user.id == id) {
-                return {
-                  id: user.id,
-                  name: user.name,
-                  family: value,
-                };
-              } else {
-                return user;
-              }
-            });
-          },
+          addItemNew(){
+            this.names.push({
+              id: this.id,
+              family: this.family,
+              email: this.email,
+            })
+          }
         },
+
       };
 
       Vue.createApp(App).mount("#app");
