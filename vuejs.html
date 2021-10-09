@@ -7,31 +7,24 @@
     <title>Learning Vue JS start</title>
 
     <style>
-      .has-error{
+      .has-error {
         color: red;
-        display:block !important;
-        
+        display: block !important;
       }
     </style>
   </head>
 
   <body>
     <div id="app">
-      <form @submit.prevent="login()">
-        <label for="email">Email</label>
-        <input type="text" v-model="email" />
-       <p style="display: none;" :class="{'has-error' : hasEmailError[0]}" v-text="hasEmailError[1]"></p>
-        <br />
-        <br />
-
-        <label for="Password">Password</label>
-        <input type="password" v-model="password" />
-        <p style="display: none;" :class="{'has-error' : hasPassword}">طول پسورد حداقل باید 8 کاراکتر باشد</p>
-
-
+      <div v-for="user in users">
+        <p v-text="user.name"></p>
+        <p v-text="user.family"></p>
       </div>
-        <button type="submit">Submit</button>
-      </form>
+
+      <ul v-for = "name in names">
+        <li >{{ name }}</li>
+      </ul>
+ 
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -40,41 +33,36 @@
       const App = {
         data() {
           return {
-            email: "davood@gmail.com",
-            password: "davood12",
-            emailIsValid: true,
-            passwordIsValid:true,
+            users: [
+              {
+                id: 1,
+                name: "davood",
+                family: "khany",
+              },
+              {
+                id: 2,
+                name: "ali",
+                famil: "rezaei",
+              },
+              {
+                id: 3,
+                name: "reza",
+                famil: "chegini",
+              },
+            ],
+            names:[
+              'davood',
+              'ali',
+              'reza'
+            ],
           };
         },
 
-        computed:{
+        computed: {},
 
-          hasEmailError(){
-            let email = this.email;
-            if(this.emailIsValids(email))
-            return [false, null]
-            else 
-            return [true, 'فرمت وارد شده صحیح نمی باشد']
-          },
+        methods: {},
 
-
-          hasPassword(){
-            if (this.password.length <= 7 ){
-              return true;
-            }
-          }
-          
-        },
-        
-        methods: {
-          emailIsValids (email) {
-             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-          } 
-        },
-
-        watch:{
-
-        }
+        watch: {},
       };
 
       Vue.createApp(App).mount("#app");
