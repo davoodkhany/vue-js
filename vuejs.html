@@ -17,19 +17,28 @@
 
   <body>
     <div id="app">
+
+
+
+
+      
       <div v-for="user of users" class="box">
         <button @click="showStatus(user.status = !user.status)">
           ShowStatus
         </button>
-        <div v-if="user.status">
+       
           <p>{{ user.name }}</p>
           <p>{{ user.email}}</p>
           <p>{{ user.password }}</p>
+          <div v-if="user.status" style="background: green">
+            {{ user.name }}.Active
+          </div>
+          <div style="color:red" v-else>
+            {{ user.name }}Deactive
+          </div>
           <button @click="Delete(user.id)">Delete</button>
-        </div>
-        <div v-else="user.status">
           
-        </div>
+
          
       </div>
     </div>
