@@ -18,15 +18,20 @@
   <body>
     <div id="app">
 
+      <div v-show ="status" >
+        text
+      </div>
 
-
+      <button @click="status = !status">Show Status</button>
 
       
       <div v-for="user of users" class="box">
-        <button @click="showStatus(user.status = !user.status)">
+
+
+        <button @click="showStatus(user.status = !user.status)"></button>
           ShowStatus
         </button>
-       
+        
           <p>{{ user.name }}</p>
           <p>{{ user.email}}</p>
           <p>{{ user.password }}</p>
@@ -38,8 +43,7 @@
           </div>
           <button @click="Delete(user.id)">Delete</button>
           
-
-         
+          
       </div>
     </div>
 
@@ -49,6 +53,7 @@
       const App = {
         data() {
           return {
+            status: true,
             users: [
               {
                 id: 1,
