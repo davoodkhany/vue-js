@@ -7,26 +7,31 @@
     <title>Learning Vue JS start</title>
 
     <style>
-      .has-error {
-        color: red;
-        display: block !important;
+      .box {
+        border: 1px solid black;
+        box-shadow: 1px 2px 3px rgb(3, 0, 190);
+        padding: 20px;
       }
     </style>
   </head>
 
   <body>
     <div id="app">
-      <div v-for="name of names">
-        <p>{{ name.family }}</p>
-        <p>{{ name.email }}</p>
-
-        <button @click="DeleteItems(name.id)">Delete</button>
+      <div v-for="user of users" class="box">
+        <button @click="showStatus(user.status = !user.status)">
+          ShowStatus
+        </button>
+        <div v-if="user.status">
+          <p>{{ user.name }}</p>
+          <p>{{ user.email}}</p>
+          <p>{{ user.password }}</p>
+          <button @click="Delete(user.id)">Delete</button>
+        </div>
+        <div v-else="user.status">
+          
+        </div>
+         
       </div>
-
-      <input type="text" v-model="id" />
-      <input type="text" v-model="family" />
-      <input type="text" v-model="email" />
-      <button @click="addItemNew()">Created</button>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -35,29 +40,37 @@
       const App = {
         data() {
           return {
-            names: [
-              { id: "1", family: "davood", email: "davoodkhany@gmail.com" },
-              { id: "2", family: "rezayee", email: "reza@gmail.com" },
+            users: [
+              {
+                id: 1,
+                name: "ali",
+                email: "ali@gmail.com",
+                password: "12345678",
+                status: true,
+              },
+              {
+                id: 2,
+                name: "davood",
+                email: "davood@gmail.com",
+                password: "12345678",
+                status: false,
+              },
+              {
+                id: 3,
+                name: "reza",
+                email: "reza@gmail.com",
+                password: "12345678",
+                status: true,
+              },
             ],
-            id: "",
-            family: "",
-            email: "",
           };
         },
 
         methods: {
-          DeleteItems(id) {
-            this.names = this.names.filter((user) => user.id != id);
+          Delete(id) {
+            this.users = this.users.filter((user) => user.id != id);
           },
-          addItemNew(){
-            this.names.push({
-              id: this.id,
-              family: this.family,
-              email: this.email,
-            })
-          }
         },
-
       };
 
       Vue.createApp(App).mount("#app");
