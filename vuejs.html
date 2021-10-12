@@ -11,37 +11,15 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    
+
     <style></style>
   </head>
 
   <body>
     <div id="app">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation" v-for="(tab , index) of tabs">
-          <button
-            class="nav-link"
-            :class="tab_id == index ? 'active' : ''"
-            type="button"
-            :id="index"
-            @click="clickButton()"
-          >
-            {{ tab.name }}
-          </button>
-        </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <div
-          class="tab-pane fade"
-          v-for="(tabContent , index) in tabs"
-          :class="tab_id == index ? 'active show' : '' "
-          :id="index"
-          role="tabpanel"
-          aria-labelledby="home-tab"
-        >
-          {{ tabContent.content }}
-        </div>
-      </div>
+
+      <my-component></my-component>
+    
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -49,36 +27,26 @@
     <script>
       const App = {
         data() {
-          return {
-            tab_id: 1,
-            tabs: [
-              {
-                id: 1,
-                name: "home",
-                content: "homeContent",
-              },
-              {
-                id: 2,
-                name: "profile",
-                content: "profileContent",
-              },
-              {
-                id: 3,
-                name: "contact",
-                content: "contactContent",
-              },
-            ],
-          };
+          return {};
         },
 
-        methods: {
-          clickButton() {
-            this.tab_id = event.target.id;
-          },
-        },
+        methods: {},
       };
 
-      Vue.createApp(App).mount("#app");
+      const app = Vue.createApp(App);
+      app.component("my-component", {
+        data() {
+          return {
+            value: 0,
+          };
+
+        },
+        template:`
+        <h3 @click="value++"> {{ this.value }}</h3>
+      `
+      });
+
+      app.mount("#app");
     </script>
   </body>
 </html>
