@@ -1,64 +1,32 @@
-
-<template >
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <tabs :items="tabz"></tabs>
-  <tabs :items="tabz1"></tabs>
-</template>
-
-
 <script>
-  import Tabs from './components/Tabs.vue'
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import HelloWorld from "./components/HelloWorld.vue";
+import Tabs from "./components/Tabs.vue";
+
+export default {
+    components:{
+    Tabs,
+  },
+data(){
 
 
-
-
-  export default {
-          components:{
-            Tabs
-          },
-           data() {
-
-          return {
-            tabz: [
-              {
-                id: 1,
-                name: "home",
-                content: "homeContent",
-              },
-              {
-                
-                name: "profile",
-                content: "profileContent",
-              },
-              {
-                id: 3,
-                name: "contact",
-                content: "contactContent",
-              },
-            ],
-             tabz1: [
-              {
-                id: 1,
-                name: "home",
-                content: "homeContent",
-              },
-              {
-                
-                name: "profile",
-                content: "profileContent",
-              },
-            ],
-          };
-        },
- 
-        methods: {
-          clickButton() {
-            this.tab_id = event.target.id;
-          },
-        },
-        }
-  
+  return{
+     
+  tabs: [
+    { name: "Home", content: "my Home" },
+    { name: "About", content: "my name is davood" },
+    { name: "Contact", content: "09199312019" },
+  ],
+  }
+}
+};
 </script>
+
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <Tabs :items="tabs"></Tabs>
+</template>
 
 <style>
 #app {
