@@ -1,31 +1,28 @@
 <script>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from "./components/HelloWorld.vue";
+
 import Tabs from "./components/Tabs.vue";
 
 export default {
-    components:{
+  components: {
     Tabs,
   },
-data(){
-
-
-  return{
-     
-  tabs: [
-    { name: "Home", content: "my Home" },
-    { name: "About", content: "my name is davood" },
-    { name: "Contact", content: "09199312019" },
-  ],
-  }
-}
+  data() {
+    return {
+      tabs: [
+        { name: "Home", content: "My Home" },
+        { name: "About", content: "My Name Is Davood" },
+        { name: "Contact", content: "09199312019" },
+      ],
+    };
+  },
 };
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <Tabs :items="tabs"></Tabs>
+  <Tabs title="Tabs and one" :items="tabs"></Tabs>
+<Tabs   title="Tabs and two" ></Tabs>
 </template>
 
 <style>
