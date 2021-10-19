@@ -1,7 +1,7 @@
 <template>
   <h2>{{ title }}</h2>
-
-  <ul class="nav nav-tabs" id="myTab" role="tablist" v-if="items">
+  <button @click="ClearTab()">Clear Tab</button>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li
       class="nav-item"
       role="presentation"
@@ -32,6 +32,7 @@
 
 <script>
 export default {
+
   props: {
     items: {
       type: Array,
@@ -42,10 +43,20 @@ export default {
       required: true,
     },
   },
+      emits:[
+    'ClearTab'
+  ],
+
   data() {
+
     return {
       CourentTab: "Home",
-    };
+    }
   },
+      methods:{
+        ClearTab(){
+           this.$emit('ClearTab')     
+        }
+    },
 };
 </script>

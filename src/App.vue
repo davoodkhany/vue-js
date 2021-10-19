@@ -15,14 +15,20 @@ export default {
         { name: "Contact", content: "09199312019" },
       ],
     };
+
   },
+      methods:{
+      eventTAbClear(){
+        this.tabs = [];
+      }
+    }
 };
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <Tabs title="Tabs and one" :items="tabs"></Tabs>
-<Tabs   title="Tabs and two" ></Tabs>
+  <img  alt="Vue logo" src="./assets/logo.png" />
+  <Tabs @ClearTab="eventTAbClear()" title="Tabs and one" :items="tabs"></Tabs>
+  
 </template>
 
 <style>
