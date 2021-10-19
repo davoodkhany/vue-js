@@ -1,4 +1,5 @@
 <template>
+
   <h2>{{ title }}</h2>
   <button @click="ClearTab()">Clear Tab</button>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,11 +29,11 @@
       {{ content }}
     </div>
   </div>
+
 </template>
 
 <script>
 export default {
-
   props: {
     items: {
       type: Array,
@@ -43,20 +44,28 @@ export default {
       required: true,
     },
   },
-      emits:[
-    'ClearTab'
-  ],
+  emits: {
+    'ClearTab': function (value) {
+      if(value == "davood"){
+        return true;
+        
+      }
+      else{ 
+        return false;
+        console.log('log false');
+      }
+    },
+  },
 
   data() {
-
     return {
       CourentTab: "Home",
-    }
+    };
   },
-      methods:{
-        ClearTab(){
-           this.$emit('ClearTab')     
-        }
+  methods: {
+    ClearTab() {
+      this.$emit("ClearTab" ,'ali');
     },
+  },
 };
 </script>
