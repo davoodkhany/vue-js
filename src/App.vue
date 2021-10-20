@@ -1,34 +1,12 @@
-<script>
-import HelloWorld from "./components/HelloWorld.vue";
-
-import Tabs from "./components/Tabs.vue";
-
-export default {
-  components: {
-    Tabs, 
-  },
-  data() {
-    return {
-      tabs: [
-        { name: "Home", content: "My Home" },
-        { name: "About", content: "My Name Is Davood" },
-        { name: "Contact", content: "09199312019" },
-      ],
-    };
-
-  },
-      methods:{
-      eventTAbClear(){
-        this.tabs = [];
-      }
-    }
-};
+<script setup>
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <img  alt="Vue logo" src="./assets/logo.png" />
-  <Tabs @ClearTab="eventTAbClear()" title="Tabs and one" :items="tabs"></Tabs>
-  
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 
 <style>
