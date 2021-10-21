@@ -1,14 +1,14 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+
 import NavBar from './components/NavBar.vue';
 import Section from './components/section.vue';
+import Content from './components/content.vue';
 </script>
 
 <template>
   <NavBar></NavBar>
   <Section></Section>
+  <Content></Content>
 </template>
 
 <style>
