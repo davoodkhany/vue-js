@@ -14,13 +14,7 @@
       <li class="nav-item" role="presentation">
         <button
           class="nav-link active"
-          id="pills-home-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#pills-home"
           type="button"
-          role="tab"
-          aria-controls="pills-home"
-          aria-selected="true"
         >
           Home
         </button>
@@ -28,13 +22,7 @@
       <li class="nav-item" role="presentation">
         <button
           class="nav-link"
-          id="pills-profile-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#pills-profile"
           type="button"
-          role="tab"
-          aria-controls="pills-profile"
-          aria-selected="false"
         >
           Profile
         </button>
@@ -42,18 +30,12 @@
     </ul>
   </div>
   <div
-<<<<<<< HEAD
     class="
       tab-content
       flex-column
       justify-content-center
       d-flex
-      align-items-center
-    "
-=======
-    class=" tab-content flex-column justify-content-center d-flex align-items-center"
->>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
-    id="pills-tabContent"
+      align-items-center"
   >
     <div
       class="mb-2 tab-pane fade show active col-4"
@@ -61,15 +43,12 @@
       role="tabpanel"
       aria-labelledby="pills-home-tab"
     >
-<<<<<<< HEAD
       <Todo
         :items="todos"
         @delete-todo="DeleteTodo"
         @update-todo="update"
       ></Todo>
-=======
-      <Todo :items="todos" @delete-todo="DeleteTodo" @update-todo="update"></Todo>
->>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
+
     </div>
   </div>
 </template>
@@ -79,11 +58,8 @@ import NavBar from "./components/NavBar.vue";
 import AddToDo from "./components/AddToDo.vue";
 import Content from "./components/Countent.vue";
 import Todo from "./components/Todo.vue";
-<<<<<<< HEAD
 import axios from "Axios";
-=======
 
->>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
 export default {
   components: {
     NavBar,
@@ -91,21 +67,11 @@ export default {
     Content,
     Todo,
   },
-<<<<<<< HEAD
 
   data() {
     return {
       todos: [
-        {
-          key: 1,
-          done: true,
-          text: "davood khany",
-        },
-        {
-          key: 2,
-          done: true,
-          text: "ali khany",
-        },
+
       ],
     };
   },
@@ -118,11 +84,11 @@ export default {
           ... value.todo
         }
       })
-
       this.todos = todos;
     })
     .catch(err => console.log(err))
   },
+
   methods: {
     CreateTodo(value) {
       
@@ -138,17 +104,9 @@ export default {
           ... todo,
           key:res.data.name
         })
-
       )
       .catch(res => console.log(res))
-
-    //  this.todos.push(
-    //    {key:Date.now(), },
-    //  )
     },
-     DeleteTodo(index){
-       this.todos = this.todos.filter(todo => todo.key != index)
-     },
 
      update(value, index){
        console.log(value , index);
@@ -163,57 +121,19 @@ export default {
          }
             return todo
         })
-        
-     }
+      
+     },
+      DeleteTodo(index){
 
-=======
-
-  data() {
-    return {
-      todos: [
-        {
-          key: 1,
-          done: true,
-          text: "davood khany",
-        },
-        {
-          key: 2,
-          done: true,
-          text: "ali khany",
-        },
-      ],
-    };
-  },
-  methods: {
-    CreateTodo(value) {
-     this.todos.push(
-       {key:Date.now(), done: true, text:value},
-     )
-    },
-     DeleteTodo(index){
-       this.todos = this.todos.filter(todo => todo.key != index)
+console.log(index);
+      axios.delete(`https://vuejs-ca936-default-rtdb.europe-west1.firebasedatabase.app/todo/${index}.json`)
+      .then(res =>{
+          this.todos = this.todos.filter(todo => todo.key != index)
+      })
+      
      },
 
-     update(value, index){
-       console.log(value , index);
-       
-        this.todos = this.todos.map((todo) => {
-         if(todo.key == index){
-           return {
-             ... todo,
-            text :value
-           }
-         }
-            return todo
-        })
-        
-     }
+  }
 
->>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
-
-  },
-};
+}
 </script>
-
-
-

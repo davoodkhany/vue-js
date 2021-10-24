@@ -69,11 +69,4 @@ export default {
     },
   },
 };
-<<<<<<< HEAD
 </script>
-
-
-
-=======
-</script>
->>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
