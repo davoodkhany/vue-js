@@ -48,7 +48,8 @@ import NavBar from "./components/NavBar.vue";
 import AddToDo from "./components/AddToDo.vue";
 import Content from "./components/Countent.vue";
 import Todo from "./components/Todo.vue";
-import axios from "Axios";
+
+import apiToDo from './api/ApiToDo';
 
 export default {
   components: {
@@ -74,9 +75,9 @@ export default {
         text: value,
       };
 
-      axios
+      apiToDo
         .post(
-          "https://vuejs-ca936-default-rtdb.europe-west1.firebasedatabase.app/todo.json",
+          "/todo.json",
           { todo }
         )
         .then((res) =>
@@ -89,9 +90,9 @@ export default {
     },
 
     update(value, index) {
-      axios
+      apiToDo
         .put(
-          `https://vuejs-ca936-default-rtdb.europe-west1.firebasedatabase.app/todo/${index}.json`,
+          `/todo/${index}.json`,
           { todo: { text: value, done: true } }
         )
         .then(
@@ -109,16 +110,16 @@ export default {
     },
     DeleteTodo(index) {
       console.log(index);
-      axios
+      apiToDo
         .delete(
-          `https://vuejs-ca936-default-rtdb.europe-west1.firebasedatabase.app/todo/${index}.json`
+          `/todo/${index}.json`
         )
         .then((res) => this.getTodos());
     },
     getTodos() {
-          axios
+          apiToDo
       .get(
-        "https://vuejs-ca936-default-rtdb.europe-west1.firebasedatabase.app/todo.json"
+        "/todo.json"
       )
       .then(({ data }) => {
         let todos = Object.entries(data).map(([key, value]) => {
