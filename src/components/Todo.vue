@@ -23,9 +23,9 @@
     </div>
     <div
       class="card-body d-flex justify-content-between align-items-center"
-      v-if="edit == true && todo.key == key"
+     v-if="edit == true && todo.key == key"
     >
-      <div class="d-flex form-group">
+      <div class="d-flex form-group"  >
         <input class="form-contoll" type="text" v-model="todotext" />
         <button  
           class="form-control btn btn-danger btn-sm"

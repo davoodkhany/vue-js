@@ -109,18 +109,17 @@ export default {
     },
 
      update(value, index){
-       console.log(value , index);
-       
+    
+      axios.put(`https://vuejs-ca936-default-rtdb.europe-west1.firebasedatabase.app/todo/${index}.json`,{todo:{text:value,done:true}});
         this.todos = this.todos.map((todo) => {
          if(todo.key == index){
-           
-           return {
+          return {
              ... todo,
             text :value
            }
          }
-            return todo
-        })
+          return todo
+      })
       
      },
       DeleteTodo(index){
