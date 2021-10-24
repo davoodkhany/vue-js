@@ -42,6 +42,7 @@
     </ul>
   </div>
   <div
+<<<<<<< HEAD
     class="
       tab-content
       flex-column
@@ -49,6 +50,9 @@
       d-flex
       align-items-center
     "
+=======
+    class=" tab-content flex-column justify-content-center d-flex align-items-center"
+>>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
     id="pills-tabContent"
   >
     <div
@@ -57,11 +61,15 @@
       role="tabpanel"
       aria-labelledby="pills-home-tab"
     >
+<<<<<<< HEAD
       <Todo
         :items="todos"
         @delete-todo="DeleteTodo"
         @update-todo="update"
       ></Todo>
+=======
+      <Todo :items="todos" @delete-todo="DeleteTodo" @update-todo="update"></Todo>
+>>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
     </div>
   </div>
 </template>
@@ -71,7 +79,11 @@ import NavBar from "./components/NavBar.vue";
 import AddToDo from "./components/AddToDo.vue";
 import Content from "./components/Countent.vue";
 import Todo from "./components/Todo.vue";
+<<<<<<< HEAD
 import axios from "Axios";
+=======
+
+>>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
 export default {
   components: {
     NavBar,
@@ -79,6 +91,7 @@ export default {
     Content,
     Todo,
   },
+<<<<<<< HEAD
 
   data() {
     return {
@@ -153,6 +166,50 @@ export default {
         
      }
 
+=======
+
+  data() {
+    return {
+      todos: [
+        {
+          key: 1,
+          done: true,
+          text: "davood khany",
+        },
+        {
+          key: 2,
+          done: true,
+          text: "ali khany",
+        },
+      ],
+    };
+  },
+  methods: {
+    CreateTodo(value) {
+     this.todos.push(
+       {key:Date.now(), done: true, text:value},
+     )
+    },
+     DeleteTodo(index){
+       this.todos = this.todos.filter(todo => todo.key != index)
+     },
+
+     update(value, index){
+       console.log(value , index);
+       
+        this.todos = this.todos.map((todo) => {
+         if(todo.key == index){
+           return {
+             ... todo,
+            text :value
+           }
+         }
+            return todo
+        })
+        
+     }
+
+>>>>>>> 8afa9691d3002ea9800637abdc7222346dd746f3
 
   },
 };
