@@ -20,26 +20,19 @@
     </ul>
   </div>
   <div
-    class="
-      tab-content
-      flex-column
-      justify-content-center
-      d-flex
-      align-items-center
-    "
+    class=" tab-content flex-column justify-content-center d-flex align-items-center"
   >
     <div
       class="mb-2 tab-pane fade show active col-4"
-      id="pills-home"
-      role="tabpanel"
-      aria-labelledby="pills-home-tab"
+      v-if="! loding"
     >
-      <Todo
+      <Todo 
         :items="todos"
         @delete-todo="DeleteTodo"
         @update-todo="update"
       ></Todo>
     </div>
+    <div v-else><img src="./assets/loading-buffering.gif" ></div>
   </div>
 </template>
 
@@ -62,6 +55,7 @@ export default {
   data() {
     return {
       todos: [],
+      loding:true,
     };
   },
   created() {
@@ -74,6 +68,7 @@ export default {
         done: true,
         text: value,
       };
+
 
       apiToDo
         .post(
@@ -117,11 +112,13 @@ export default {
         .then((res) => this.getTodos());
     },
     getTodos() {
+      this.loding = true
           apiToDo
       .get(
         "/todo.json"
       )
       .then(({ data }) => {
+        this.loding = false;
         let todos = Object.entries(data).map(([key, value]) => {
           return {
             key,
